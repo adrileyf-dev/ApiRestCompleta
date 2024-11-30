@@ -4,3 +4,8 @@ spring:
   application: ApiRestCompleta
   profiles:
     active: dev
+  mvc:
+  locale: pt_BR
+  locale-resolver: fixed
+
+#LOCALE
