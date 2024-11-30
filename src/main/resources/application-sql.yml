@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: contasApg
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://${MSSQL_HOST:localhost}:${MSSQL_PORT:1433};databaseName=${MSSQL_DATABASE:base}
+    username: ${MSSQL_USER:sa}
+    password: ${MSSQL_PASSWORD:StrongPass1234!}
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
