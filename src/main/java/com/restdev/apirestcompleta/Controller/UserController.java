@@ -1,11 +1,11 @@
 package com.restdev.apirestcompleta.Controller;
 
+import com.restdev.apirestcompleta.Dto.UsuarioDto;
+import com.restdev.apirestcompleta.Dto.mapper.UserMapper;
 import com.restdev.apirestcompleta.entity.User;
-import com.restdev.apirestcompleta.repository.UserRepository;
 import com.restdev.apirestcompleta.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,14 +16,14 @@ import java.util.List;
 @RequestMapping("api/v1/usuarios")
 public class UserController {
     private final UserService service;
-    private final UserRepository userRepository;
+    private final UserMapper usuarioMapper;
+
 
     @PostMapping()
-    public ResponseEntity<User> create(@RequestBody User usuario){
-       User user = service.salvar(usuario);
-         return  ResponseEntity.status(HttpStatus.CREATED).body(usuario);
+    public ResponseEntity<UsuarioDto> create(@RequestBody UsuarioDto usuariodto){
+       User user = service.salvar(usuarioMapper.ToUser(usuariodto));
+       return ResponseEntity.status(HttpStatus.CREATED).body(usuarioMapper.ToDTo(user));
     }
-
     @GetMapping("/{id}")
     public ResponseEntity<User>findById(@PathVariable Long id){
            User user = service.findById(id);

@@ -4,7 +4,9 @@ import com.restdev.apirestcompleta.Enum.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "Usuario")
@@ -27,5 +29,17 @@ public class User {
     private String modifyFor;
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
-    Role role;
+    Role role ;
+    @PrePersist
+    public void prePersist(){
+        dtCreate = LocalDateTime.now();
+    }
+    @PreUpdate
+    public void PreUpdate(){
+        dtUpdate = LocalDateTime.now();
+    }
+
+
 }
+
+

@@ -22,11 +22,10 @@ public class UserService {
     public User UpdatePassword(Long id, String password) {
         User user = findById(id);
         user.setPassword(password);
-        return  user;
+        return user;
     }
     @Transactional(readOnly = true)
     public List<User> findAll() {
         return repository.findAll();
-
     }
 }
