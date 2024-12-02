@@ -1,5 +1,6 @@
 package com.restdev.apirestcompleta.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.restdev.apirestcompleta.Enum.Role;
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,7 +13,7 @@ import java.util.Date;
 @Table(name = "Usuario")
 @Getter
 @Setter
-@AllArgsConstructor
+
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class User {
@@ -20,8 +21,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Long id;
-    @Column(nullable = false)
+
+    @Column(name = "username", nullable = false, unique = true, length = 100)
     private String username;
+
     private String password;
     private LocalDateTime dtCreate;
     private LocalDateTime dtUpdate;

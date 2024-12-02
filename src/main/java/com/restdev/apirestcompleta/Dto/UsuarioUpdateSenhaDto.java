@@ -8,17 +8,18 @@ import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
 
-public record UsuarioDto(
+public record UsuarioUpdateSenhaDto(
         @NotBlank
-        @Email(message = "Formato de Email inválido!")
-        String username,
         @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
         @NotBlank
         @Size(min = 6,max = 6)
-        String password,
-        LocalDateTime dtCreate,
-        LocalDateTime dtUpdate,
-        String createFor,
-        String modifyFor,
-        Role role
+        String senhaAtual,
+        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+        @NotBlank
+        @Size(min = 6,max = 6)
+        String novaSenha,
+        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+        @NotBlank
+        @Size(min = 6,max = 6)
+        String confirmaSenha
 ) {}
