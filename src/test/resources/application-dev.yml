@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: School
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${PGHOST:localhost}:${PGPORT:5436}/${PGDATABASE:park}
+    username: ${PGUSER:admin}
+    password: ${PGPASSWORD:admin}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect

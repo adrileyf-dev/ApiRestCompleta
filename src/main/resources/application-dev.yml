@@ -1,9 +1,11 @@
+server:
+  port: 8093
 spring:
   application:
     name: School
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://${PGHOST:localhost}:${PGPORT:5436}/${PGDATABASE:park}
+    url: jdbc:postgresql://${PGHOST:localhost}:${PGPORT:5436}/${PGDATABASE:dev}
     username: ${PGUSER:admin}
     password: ${PGPASSWORD:admin}
   jpa:

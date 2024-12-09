@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  dev-postgres:
+    image: postgres:latest
+    container_name: dev-postgres
+    networks:
+      - dev
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=dev
+    ports:
+      - 5436:5432
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+
+  dev-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dev-service
+    depends_on:
+      - dev-postgres
+    networks:
+      - dev
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://dev-postgres:5432/dev
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=admin
+    ports:
+      - 8092:8092
+
+networks:
+  dev:
+    driver: bridge
