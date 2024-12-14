@@ -1,8 +1,18 @@
 spring:
-  application: ApiRestCompleta
+  application:
+    name: ApiRestCompleta
   profiles:
     active: dev
-  mvc:
-  locale: pt_BR
-  locale-resolver: fixed
+mvc:
+    locale: pt_BR
+    locale-resolver: fixed
+springdoc:
+  swagger-ui:
+    path: "/docs-park.html"
+  api-docs:
+    path: "/docs-park"
+  packages-to-scan: "com.restdev.apirestcompleta.web.controller"
 
+api:
+  v1:
+    base-path: "/api/v1"

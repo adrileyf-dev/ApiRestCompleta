@@ -26,7 +26,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
         final String token = request.getHeader(JwtUtils.JWT_AUTHORIZATION);
 
         if (token == null || !token.startsWith(JwtUtils.JWT_BEARER)) {
-            log.info("JWT Token está nulo, vazio ou não iniciado com 'Bearer '.");
+            log.info("jwt token está nulo, vazio ou não iniciado com 'Bearer '.");
             filterChain.doFilter(request, response);
             return;
         }
@@ -38,15 +38,11 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
         }
 
         String username = JwtUtils.getUsernameFromToken(token);
-
         toAuthentication(request, username);
-
         filterChain.doFilter(request, response);
     }
-
     private void toAuthentication(HttpServletRequest request, String username) {
         UserDetails userDetails = detailsService.loadUserByUsername(username);
-
         UsernamePasswordAuthenticationToken authenticationToken = UsernamePasswordAuthenticationToken
                 .authenticated(userDetails, null, userDetails.getAuthorities());
 

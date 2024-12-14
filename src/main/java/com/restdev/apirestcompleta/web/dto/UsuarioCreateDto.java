@@ -11,7 +11,6 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 public class UsuarioCreateDto {
-
     @NotBlank
     @Email(message = "formato do e-mail está invalido", regexp = "^[a-z0-9.+-]+@[a-z0-9.-]+\\.[a-z]{2,}$")
     private String username;

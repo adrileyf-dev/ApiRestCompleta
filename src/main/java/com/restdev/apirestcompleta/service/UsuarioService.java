@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -38,7 +39,7 @@ public class UsuarioService {
 
     @Transactional
     public Usuario editarSenha(Long id, String senhaAtual, String novaSenha, String confirmaSenha) {
-        if (!novaSenha.equals(confirmaSenha)) {
+        if ( !novaSenha.equals(confirmaSenha)) {
             throw new PasswordInvalidException("Nova senha não confere com confirmação de senha.");
         }
 
@@ -46,7 +47,6 @@ public class UsuarioService {
         if (!passwordEncoder.matches(senhaAtual, user.getPassword())) {
             throw new PasswordInvalidException("Sua senha não confere.");
         }
-
         user.setPassword(passwordEncoder.encode(novaSenha));
         return user;
     }
