@@ -12,7 +12,8 @@ import org.springframework.stereotype.Service;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Entity(name = "cliente")
+@Entity
+@Table(name = "cliente")
 @Getter
 @Setter
 @Service
@@ -22,7 +23,7 @@ import java.time.LocalDateTime;
 public class Cliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Exclude
+    @EqualsAndHashCode.Include
     private Long id;
     private String nome;
     @Column(nullable = false,unique = true,length = 11)
@@ -42,7 +43,4 @@ public class Cliente implements Serializable {
     @LastModifiedBy
     @Column(name = "modificado_por")
     private String modificadoPor;
-
-
-
 }

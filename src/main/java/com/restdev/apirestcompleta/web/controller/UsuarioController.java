@@ -60,7 +60,6 @@ public class UsuarioController {
         Usuario user = usuarioService.buscarPorId(id);
         return ResponseEntity.ok(UsuarioMapper.toDto(user));
     }
-
     @Operation(summary = "Atualizar senha", description = "Requisição exige um Bearer Token. Acesso restrito a ADMIN|CLIENTE",
             security = @SecurityRequirement(name = "security"),
             responses = {
@@ -81,7 +80,6 @@ public class UsuarioController {
         Usuario user = usuarioService.editarSenha(id, dto.getSenhaAtual(), dto.getNovaSenha(), dto.getConfirmaSenha());
         return ResponseEntity.noContent().build();
     }
-
     @Operation(summary = "Listar todos os usuários cadastrados", description = "Requisição exige um Bearer Token. Acesso restrito a ADMIN",
             security = @SecurityRequirement(name = "security"),
             responses = {

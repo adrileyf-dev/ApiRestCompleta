@@ -4,8 +4,8 @@ spring:
   profiles:
     active: dev
 mvc:
-    locale: pt_BR
-    locale-resolver: fixed
+  locale: pt_BR
+  locale-resolver: fixed
 springdoc:
   swagger-ui:
     path: "/docs-park.html"

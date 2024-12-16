@@ -1,8 +1,6 @@
 server:
-  port: 8092
+  port: 8093
 spring:
-  application:
-    name: contasApg
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://${PGHOST:localhost}:${PGPORT:5432}/${PGDATABASE:dev}

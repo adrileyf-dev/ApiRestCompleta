@@ -16,7 +16,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 public class UsuarioService {
-
     private final UsuarioRepository usuarioRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -29,14 +28,12 @@ public class UsuarioService {
             throw new UsernameUniqueViolationException(String.format("Username '%s' já cadastrado", usuario.getUsername()));
         }
     }
-
     @Transactional(readOnly = true)
     public Usuario buscarPorId(Long id) {
         return usuarioRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException(String.format("Usuário id=%s não encontrado", id))
         );
     }
-
     @Transactional
     public Usuario editarSenha(Long id, String senhaAtual, String novaSenha, String confirmaSenha) {
         if ( !novaSenha.equals(confirmaSenha)) {
@@ -50,7 +47,6 @@ public class UsuarioService {
         user.setPassword(passwordEncoder.encode(novaSenha));
         return user;
     }
-
     @Transactional(readOnly = true)
     public List<Usuario> buscarTodos() {
         return usuarioRepository.findAll();
@@ -62,7 +58,6 @@ public class UsuarioService {
                 () -> new EntityNotFoundException(String.format("Usuario com '%s' não encontrado", username))
         );
     }
-
     @Transactional(readOnly = true)
     public Usuario.Role buscarRolePorUsername(String username) {
         return usuarioRepository.findRoleByUsername(username);
