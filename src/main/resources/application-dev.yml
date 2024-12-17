@@ -8,10 +8,11 @@ spring:
     url: jdbc:postgresql://${PGHOST:localhost}:${PGPORT:5436}/${PGDATABASE:dev}
     username: ${PGUSER:admin}
     password: ${PGPASSWORD:admin}
+
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect

@@ -30,7 +30,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'org.postgresql:postgresql'
+	implementation 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
@@ -44,21 +44,15 @@ dependencies {
 
 	// https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui
 	implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.8.0'
-
-
-	dependencies {
 		// API principal do JJWT
-		implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
 
 		// Implementação da API (necessária em tempo de execução)
-		runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
-
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
 		// Dependência de serialização (escolha entre Jackson ou Gson)
-		runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5' // Usar Jackson
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5' // Usar Jackson
 		// runtimeOnly 'io.jsonwebtoken:jjwt-gson:0.11.5' // Se preferir Gson
-	}
-
-
+	implementation 'com.microsoft.sqlserver:mssql-jdbc:9.4.1.jre11' // Substitua pela versão desejada
 
 }
 tasks.named('test') {

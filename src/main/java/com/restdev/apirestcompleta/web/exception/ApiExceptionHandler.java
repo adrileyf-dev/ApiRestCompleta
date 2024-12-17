@@ -1,9 +1,6 @@
 package com.restdev.apirestcompleta.web.exception;
 
-import com.restdev.apirestcompleta.exception.CpfUnique;
-import com.restdev.apirestcompleta.exception.EntityNotFoundException;
-import com.restdev.apirestcompleta.exception.PasswordInvalidException;
-import com.restdev.apirestcompleta.exception.UsernameUniqueViolationException;
+import com.restdev.apirestcompleta.exception.*;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -45,7 +42,7 @@ public class ApiExceptionHandler {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(new ErrorMessage(request, HttpStatus.NOT_FOUND, ex.getMessage()));
     }
-    @ExceptionHandler({UsernameUniqueViolationException.class, CpfUnique.class})
+    @ExceptionHandler({UsernameUniqueViolationException.class, CpfUnique.class, CodigoUniqueViolationExcept.class})
     public ResponseEntity<ErrorMessage> uniqueViolationException(RuntimeException ex, HttpServletRequest request) {
         log.error("Api Error - ", ex);
         return ResponseEntity

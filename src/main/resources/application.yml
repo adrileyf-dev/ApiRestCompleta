@@ -2,7 +2,7 @@ spring:
   application:
     name: ApiRestCompleta
   profiles:
-    active: dev
+    active: sql
 mvc:
   locale: pt_BR
   locale-resolver: fixed

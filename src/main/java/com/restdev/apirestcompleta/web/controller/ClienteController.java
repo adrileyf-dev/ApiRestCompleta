@@ -103,7 +103,7 @@ public class ClienteController {
     @GetMapping("/detalhes")
     @PreAuthorize("hasRole('CLIENTE')")
     public ResponseEntity<DtoCliente> getDetalhes(@AuthenticationPrincipal JwtUserDetails userDetails) {
-        Cliente cliente = clienteService.buscarPorId(userDetails.getId());
+        Cliente cliente = clienteService.buscarPorUsuarioId(userDetails.getId());
         return ResponseEntity.ok(mapper.Todto(cliente));
     }
 }
