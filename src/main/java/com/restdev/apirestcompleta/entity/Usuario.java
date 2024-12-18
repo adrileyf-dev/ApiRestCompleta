@@ -1,16 +1,12 @@
 package com.restdev.apirestcompleta.entity;
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import java.io.Serializable;
 import java.util.Objects;
-
-@Getter @Setter @NoArgsConstructor
-@Entity
+@Getter @Setter @NoArgsConstructor @Entity
 @Table(name = "usuarios")
 @EntityListeners(AuditingEntityListener.class)
 public class Usuario  extends Auditable implements Serializable {
@@ -35,16 +31,8 @@ public class Usuario  extends Auditable implements Serializable {
         Usuario usuario = (Usuario) o;
         return Objects.equals(id, usuario.id);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(id);
-    }
-
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "id=" + id +
-                '}';
     }
 }

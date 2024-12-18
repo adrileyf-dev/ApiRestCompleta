@@ -1,20 +1,14 @@
 package com.restdev.apirestcompleta.entity;
-
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.stereotype.Service;
-
 import java.io.Serializable;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "vagas")
-@Getter
-@Setter
-@Service
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter @Setter @Service @AllArgsConstructor @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 public class Vaga extends Auditable  implements Serializable  {
     @Id

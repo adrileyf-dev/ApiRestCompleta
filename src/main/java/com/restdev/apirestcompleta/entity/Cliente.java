@@ -14,13 +14,9 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "cliente")
-@Getter
-@Setter
-@Service
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter @Setter @Service @AllArgsConstructor @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class Cliente implements Serializable {
+public class Cliente extends Auditable implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
@@ -31,16 +27,6 @@ public class Cliente implements Serializable {
     @OneToOne
     @JoinColumn(name = "id_usuario",nullable = false)
     private Usuario usuario;
-    @CreatedDate
-    @Column(name = "data_criacao")
-    private LocalDateTime dataCriacao;
-    @LastModifiedDate
-    @Column(name = "data_modificacao")
-    private LocalDateTime dataModificacao;
-    @CreatedBy
-    @Column(name = "criado_por")
-    private String criadoPor;
-    @LastModifiedBy
-    @Column(name = "modificado_por")
-    private String modificadoPor;
+
+
 }
