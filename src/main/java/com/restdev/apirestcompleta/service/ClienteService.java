@@ -1,10 +1,12 @@
 package com.restdev.apirestcompleta.service;
 import com.restdev.apirestcompleta.entity.Cliente;
+import com.restdev.apirestcompleta.entity.ClienteVaga;
 import com.restdev.apirestcompleta.exception.CpfUnique;
 import com.restdev.apirestcompleta.exception.EntityNotFoundException;
 import com.restdev.apirestcompleta.repository.ClienteRepository;
 import com.restdev.apirestcompleta.repository.Projection.ClienteProjection;
 import lombok.RequiredArgsConstructor;
+import org.mapstruct.Named;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -43,4 +45,12 @@ public class ClienteService {
     public Cliente buscarPorUsuarioId(Long id) {
         return clienteRepository.findByUsuarioId(id);
     }
+
+    @Transactional(readOnly = true)
+
+    public Cliente buscarPorCpf(String cpf) {
+    return clienteRepository.findByCpf(cpf).orElseThrow(()->new EntityNotFoundException(String.format("Cliente com CPF '%s' não encontrado",cpf)));
+    }
+
+
 }

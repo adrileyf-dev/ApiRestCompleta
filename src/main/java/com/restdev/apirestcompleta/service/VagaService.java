@@ -9,6 +9,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import static com.restdev.apirestcompleta.entity.Vaga.StatusVaga.LIVRE;
+
 @Service
 @RequiredArgsConstructor
 public class VagaService {
@@ -26,4 +28,11 @@ public class VagaService {
     public  Vaga buscarPorCodigo(String codigo){
         return repository.findByCodigo(codigo).orElseThrow(()-> new EntityNotFoundException(String.format("VAga não encontada")));
     }
+    @Transactional(readOnly = true)
+    public Vaga buscarVagaLivre() {
+        return  repository.findFirstByStatusVaga(LIVRE).orElseThrow(()->new EntityNotFoundException("Nao tem vaga Livre "));
+    }
 }
+
+
+
