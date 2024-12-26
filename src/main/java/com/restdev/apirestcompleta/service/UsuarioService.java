@@ -46,6 +46,8 @@ public class UsuarioService {
         }
         user.setPassword(passwordEncoder.encode(novaSenha));
         return user;
+
+
     }
     @Transactional(readOnly = true)
     public List<Usuario> buscarTodos() {
